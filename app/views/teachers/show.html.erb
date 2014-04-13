@@ -1,1 +1,29 @@
-<h1><%= @teacher.first_name %> <%= @teacher.last_name %></h1>
+<div class="row">
+  <div class="col-md-4">
+    <div class="page-header">
+    <h1><%= @teacher.first_name %> <%= @teacher.last_name %></h1>
+    </div>
+    <table class="table table-bordered">
+    <tr>
+      <th>Age</th>
+      <td><%= @teacher.age %></td>
+    </tr>
+    <tr>
+      <th>Class</th>
+      <td><%= @teacher.experience %></td>
+    </tr>
+    <tr>
+      <th>Spaciality</th>
+      <td><%= @teacher.speciality %></td>
+    </tr>
+    </table>
+  </div>
+  <div class="col-md-3 col-md-offset-5">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Valdymas</div>
+        <ul class="nav nav-pills nav-stacked">
+          <%= top_nav_link_to 'Edit', edit_teacher_path(@teacher) %>
+        </ul>
+    </div>
+  </div>
+</div>
