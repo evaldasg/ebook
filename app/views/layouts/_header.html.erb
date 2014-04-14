@@ -29,7 +29,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ugdymo planas <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li></li>
+            <li><%= link_to 'Disciplinos', disciplines_path %></li>
+            <li><%= link_to 'Sukurti Discipliną', new_discipline_path %></li>
             <li></li>
           </ul>
         </li>
@@ -37,8 +38,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Grupės <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li></li>
-            <li></li>
+            <li><%= link_to 'Visos', groups_path %></li>
+            <li><%= link_to 'Sukurti grupę', new_group_path %></li>
           </ul>
         </li>
 

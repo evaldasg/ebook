@@ -18,4 +18,5 @@ describe "A student" do
 
     expect(student.mmup?).to be_true
   end
+
 end

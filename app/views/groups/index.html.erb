@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h1>Groups</h1>
+</div>
+<div class="table-responsive">
+<table class="table table-striped table-hover table-bordered">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Teacher</th>
+    <th>Discipline</th>
+    <th>Actions</th>
+  </tr>
+</thead>
+<tbody>
+  <% @groups.each do |group| %>
+  <tr>
+    <td><%= group.name %></td>
+    <td><%= group.description %></td>
+    <td><%= group.teacher.first_name %> <%= group.teacher.last_name %></td>
+    <td><%= group.discipline %></td>
+    <td><%= link_to glyph(:pencil) + ' Edit', edit_group_path(group) %>
+     <%= link_to glyph(:trash) + ' Delete', group, method: :delete,
+              data: { confirm: "Are you sore?" } %></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+</div>

@@ -1,0 +1,50 @@
+<%= form_for @discipline, html: { class: "form-inline", role: "form" } do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :klass_1, '1' %>
+    <%= f.text_field :klass_1, size: 3, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :klass_2, '2' %>
+    <%= f.text_field :klass_2, size: 3, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :klass_3, '3' %>
+    <%= f.text_field :klass_3, size: 3, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :klass_4, '4' %>
+    <%= f.text_field :klass_4, size: 3, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :klass_5, '5' %>
+    <%= f.text_field :klass_5, size: 3, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :klass_6, '6' %>
+    <%= f.text_field :klass_6, size: 3, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :klass_7, '7' %>
+    <%= f.text_field :klass_7, size: 3, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :klass_8, '8' %>
+    <%= f.text_field :klass_8, size: 3, class: "form-control" %>
+  </div>
+
+    <div class="col-md-8 margintopmid">
+      <%= f.submit class: "btn btn-primary" %> <%= link_to "Cancel", @discipline, class: "btn btn-warning" %>
+    </div>
+<% end %>
