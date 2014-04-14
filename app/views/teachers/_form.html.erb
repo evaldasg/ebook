@@ -1,0 +1,38 @@
+<%= form_for @teacher, html: { class: "form-horizontal" } do |f| %>
+  <div class="form-group">
+    <%= f.label :first_name, class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+    <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name, class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+    <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :age, class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+    <%= f.number_field :age, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :experience, class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+    <%= f.number_field :experience, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :speciality, class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+    <%= f.text_field :speciality, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-8">
+    <%= f.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", @teacher, class: "btn btn-warning" %>
+    </div>
+  </div>
+<% end %>

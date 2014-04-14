@@ -9,7 +9,7 @@
       <td><%= @teacher.age %></td>
     </tr>
     <tr>
-      <th>Class</th>
+      <th>Experience</th>
       <td><%= @teacher.experience %></td>
     </tr>
     <tr>
@@ -23,6 +23,9 @@
       <div class="panel-heading">Valdymas</div>
         <ul class="nav nav-pills nav-stacked">
           <%= top_nav_link_to 'Edit', edit_teacher_path(@teacher) %>
+          <li><%= link_to 'Delete', @teacher, method: :delete,
+              data: { confirm: "Are you sore?" } %></li>
+          <%= top_nav_link_to 'Visi mokytojai', teachers_path %>
         </ul>
     </div>
   </div>

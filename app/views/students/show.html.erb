@@ -23,6 +23,9 @@
       <div class="panel-heading">Valdymas</div>
         <ul class="nav nav-pills nav-stacked">
           <%= top_nav_link_to 'Edit', edit_student_path(@student) %>
+          <li><%= link_to 'Delete', @student, method: :delete,
+              data: { confirm: "Are you sore?" } %></li>
+          <%= top_nav_link_to 'Visi mokiniai', students_path %>
         </ul>
     </div>
   </div>

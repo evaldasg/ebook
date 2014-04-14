@@ -19,7 +19,9 @@
     <td><%= link_to student.last_name, student %></td>
     <td><%= student.klass %></td>
     <td><%= student.speciality %></td>
-    <td><a href="#">Edit</a></td>
+    <td><%= link_to glyph(:pencil) + ' Edit profile', edit_student_path(student) %>
+     <%= link_to glyph(:trash) + ' Delete', student, method: :delete,
+              data: { confirm: "Are you sore?" } %></td>
   </tr>
   <% end %>
 </tbody>

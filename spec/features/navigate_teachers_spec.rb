@@ -6,7 +6,7 @@ describe "Navigating teachers" do
 
     visit teacher_url(teacher)
 
-    click_link "Mokytojai"
+    find('li', text: 'Mokytojai').click_link("Visi")
 
     expect(current_path).to eq(teachers_path)
   end

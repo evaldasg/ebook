@@ -17,6 +17,22 @@ class TeachersController < ApplicationController
     redirect_to @teacher
   end
 
+  def new
+    @teacher = Teacher.new
+  end
+
+  def create
+    @teacher = Teacher.new(teacher_params)
+    @teacher.save
+    redirect_to @teacher
+  end
+
+  def destroy
+    @teacher = Teacher.find(params[:id])
+    @teacher.destroy
+    redirect_to teachers_url
+  end
+
 private
   def teacher_params
     params.require(:teacher).permit(:first_name, :last_name, :age, :experience, :speciality)

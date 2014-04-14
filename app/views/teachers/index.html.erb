@@ -15,7 +15,9 @@
   <tr>
     <td><%= teacher.first_name %></td>
     <td><%= link_to teacher.last_name, teacher %></td>
-    <td><a href="#">Edit</a></td>
+    <td><%= link_to glyph(:pencil) + ' Edit profile', edit_teacher_path(teacher) %>
+     <%= link_to glyph(:trash) + ' Delete', teacher, method: :delete,
+              data: { confirm: "Are you sore?" } %></td>
   </tr>
   <% end %>
 </tbody>

@@ -3,44 +3,7 @@
     <div class="page-header">
       <h1>Editing student:</h1>
     </div>
-      <%= form_for @student, html: { class: "form-horizontal" } do |f| %>
-        <div class="form-group">
-          <%= f.label :first_name, class: "col-sm-4 control-label" %>
-          <div class="col-sm-8">
-          <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :last_name, class: "col-sm-4 control-label" %>
-          <div class="col-sm-8">
-          <%= f.text_field :last_name, class: "form-control" %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :age, class: "col-sm-4 control-label" %>
-          <div class="col-sm-8">
-          <%= f.number_field :age, class: "form-control" %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :klass, "Class", class: "col-sm-4 control-label" %>
-          <div class="col-sm-8">
-          <%= f.number_field :klass, class: "form-control" %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :speciality, class: "col-sm-4 control-label" %>
-          <div class="col-sm-8">
-          <%= f.text_field :speciality, class: "form-control" %>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-4 col-sm-8">
-          <%= f.submit class: "btn btn-primary" %>
-          <%= link_to "Cancel", @student, class: "btn btn-warning" %>
-          </div>
-        </div>
-      <% end %>
+      <%= render 'form' %>
   </div>
 </div>
 
