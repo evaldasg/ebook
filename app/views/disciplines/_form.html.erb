@@ -1,50 +1,93 @@
-<%= form_for @discipline, html: { class: "form-inline", role: "form" } do |f| %>
+<%= form_for @discipline, html: { class: "form-horizontal", role: "form" } do |f| %>
   <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.label :name, 'Pavadinimas', class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :klass_1, '1' %>
-    <%= f.text_field :klass_1, size: 3, class: "form-control" %>
+    <%= f.label :speciality, 'Specialybė', class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= f.select :speciality, Discipline::SPECIALITIES, {}, {class: "form-control"} %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :klass_2, '2' %>
-    <%= f.text_field :klass_2, size: 3, class: "form-control" %>
+    <%= f.label :klass, 'Klasė', class: "col-sm-4 control-label" %>
+    <div class="col-sm-3">
+      <%= f.select :klass, Discipline::KLASSES, {}, { class: "form-control" } %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :klass_3, '3' %>
-    <%= f.text_field :klass_3, size: 3, class: "form-control" %>
+    <%= f.label :duration, 'Valandų', class: "col-sm-4 control-label" %>
+    <div class="col-sm-3">
+      <%= f.number_field :duration, { step: "0.5", class: "form-control" } %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :klass_4, '4' %>
-    <%= f.text_field :klass_4, size: 3, class: "form-control" %>
+    <%= f.label :syllabus, 'Programa', class: "col-sm-4 control-label" %><rb />
+    <div class="col-sm-8">
+    <% Discipline::SYLLABUS.each do |syllabus| %>
+      <div class="radio">
+        <%= f.radio_button :syllabus, syllabus %> <%= syllabus %>
+      </div>
+    <% end %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :klass_5, '5' %>
-    <%= f.text_field :klass_5, size: 3, class: "form-control" %>
+    <%= f.label :variant, 'Forma', class: "col-sm-4 control-label" %><rb />
+    <div class="col-sm-8">
+    <% Discipline::VARIANTS.each do |variant| %>
+      <div class="radio">
+        <%= f.radio_button :variant, variant %> <%= variant %>
+      </div>
+    <% end %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :klass_6, '6' %>
-    <%= f.text_field :klass_6, size: 3, class: "form-control" %>
+    <%= f.label :required, 'Privaloma?', class: "col-sm-4 control-label" %><rb />
+    <div class="col-sm-8">
+    <% if @discipline.new_record? %>
+      <div class="radio">
+        <%= f.radio_button :required, false %> Ne
+      </div>
+    <% else %>
+      <div class="radio-inline">
+        <%= f.radio_button :required, true %> Taip
+      </div>
+      <div class="radio-inline">
+        <%= f.radio_button :required, false %> Ne
+      </div>
+    <% end %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :klass_7, '7' %>
-    <%= f.text_field :klass_7, size: 3, class: "form-control" %>
+    <%= f.label :status, 'Būsena?', class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+    <% if @discipline.new_record? %>
+      <div class="radio">
+        <%= f.radio_button :status, false %> Neaktyvi
+      </div>
+    <% else %>
+      <div class="radio-inline">
+        <%= f.radio_button :status, true %> Aktyvi
+      </div>
+      <div class="radio-inline">
+        <%= f.radio_button :status, false %> Neaktyvi
+      </div>
+    <% end %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :klass_8, '8' %>
-    <%= f.text_field :klass_8, size: 3, class: "form-control" %>
-  </div>
-
-    <div class="col-md-8 margintopmid">
-      <%= f.submit class: "btn btn-primary" %> <%= link_to "Cancel", @discipline, class: "btn btn-warning" %>
+    <div class="form-group margintopmid">
+      <div class="col-sm-offset-4 col-sm-8">
+        <%= f.submit class: "btn btn-primary" %> <%= link_to "Cancel", disciplines_path, class: "btn btn-warning" %>
+      </div>
     </div>
 <% end %>

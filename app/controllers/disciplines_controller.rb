@@ -23,9 +23,26 @@ class DisciplinesController < ApplicationController
     redirect_to :disciplines
   end
 
+  def destroy
+    @discipline = Discipline.find(params[:id])
+    @discipline.destroy
+    redirect_to :disciplines
+  end
+
 private
 
   def discipline_params
-    params.require(:discipline).permit(:name, :klass_1, :klass_2, :klass_3, :klass_4, :klass_5, :klass_6, :klass_7, :klass_8)
+    params.require(:discipline).permit(:name, :klass, :variant, :duration, :speciality, :syllabus, :required, :status)
+  end
+
+  def when_changed_status(discipline)
+    discipline.students.each do |student|
+      sd = student.disciplines
+      if discipline.status
+        sd << discipline unless sd.include?(discipline)
+      else
+        sd.delete(discipline)
+      end
+    end
   end
 end

@@ -18,13 +18,16 @@ class GroupsController < ApplicationController
   end
 
   def new
-    @teachers = Teacher.all
+    @students = Student.all
     @group = Group.new
   end
 
   def create
+    binding.pry
     @group = Group.new(group_params)
     @group.save
+
+
     redirect_to :groups
   end
 
@@ -36,6 +39,6 @@ class GroupsController < ApplicationController
 
 private
   def group_params
-    params.require(:group).permit(:name, :description, :teacher_id, :discipline)
+    params.require(:group).permit(:name, :description, :teacher_id, :discipline_id, :variant, :students_attributes)
   end
 end

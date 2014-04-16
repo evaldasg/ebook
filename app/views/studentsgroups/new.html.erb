@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="page-header">
+      <h1>Creating group:</h1>
+    </div>
+
+
+      <%= form_for @group, html: { class: "form-horizontal", role: "form" } do |f| %>
+        <div class="form-group">
+          <%= f.label :name, class: "col-sm-4 control-label" %>
+          <div class="col-sm-8">
+          <%= f.text_field :name, autofocus: true, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :variant, 'Forma', class: "col-sm-4 control-label" %><rb />
+          <div class="col-sm-8">
+          <% Discipline::VARIANTS.each do |variant| %>
+            <div class="radio">
+              <%= f.radio_button :variant, variant %> <%= variant %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :discipline_id, 'Discipline', class: "col-sm-4 control-label" %>
+          <div class="col-sm-8">
+          <%= f.select :discipline_id, Discipline.all.collect {|d| [ "#{d.name} #{d.klass} kl.", d.id ] }, {}, { class: "form-control" } %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :teacher_id, 'Teacher', class: "col-sm-4 control-label" %>
+          <div class="col-sm-8">
+          <%= f.select :teacher_id, Teacher.all.collect {|t| [ "#{t.first_name} #{t.last_name}",
+           t.id ] }, {}, { class: "form-control" } %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description, 'Pastabos', class: "col-sm-4 control-label" %>
+          <div class="col-sm-8">
+          <%= f.text_area :description, cols: 80, class: "form-control" %>
+          </div>
+        </div>
+
+        <%= f.fields_for :students do |builder| %>
+          <fieldset>
+            <%= builder.label :student_id, "Students" %><br/>
+            <%= builder.select :student_id, Student.all.collect {|t| [ "#{t.first_name} #{t.last_name}",
+           t.id ] }, {}, { class: "form-control" } %>
+          </fieldset>
+        <% end %>
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-8">
+          <%= f.submit class: "btn btn-primary" %>
+          <%= link_to "Cancel", students_path, class: "btn btn-warning" %>
+          </div>
+        </div>
+      <% end %>
+
+  </div>
+</div>

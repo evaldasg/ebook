@@ -11,32 +11,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414123447) do
+ActiveRecord::Schema.define(version: 20140416084751) do
 
   create_table "disciplines", force: true do |t|
     t.string   "name"
-    t.float    "klass_1"
-    t.float    "klass_2"
-    t.float    "klass_3"
-    t.float    "klass_4"
-    t.float    "klass_5"
-    t.float    "klass_6"
-    t.float    "klass_7"
-    t.float    "klass_8"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "klass",      limit: 1
+    t.string   "variant"
+    t.decimal  "duration",             precision: 2, scale: 1, default: 0.0
+    t.string   "speciality"
+    t.string   "syllabus"
+    t.boolean  "required",                                     default: true
+    t.boolean  "status",                                       default: true
   end
 
   create_table "groups", force: true do |t|
     t.string   "name"
-    t.string   "description"
+    t.text     "description",   limit: 255
     t.integer  "teacher_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "discipline"
+    t.integer  "discipline_id"
+    t.string   "variant"
   end
 
+  add_index "groups", ["discipline_id"], name: "index_groups_on_discipline_id"
   add_index "groups", ["teacher_id"], name: "index_groups_on_teacher_id"
+
+  create_table "student_disciplines", force: true do |t|
+    t.integer  "student_id"
+    t.integer  "discipline_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "student_disciplines", ["discipline_id"], name: "index_student_disciplines_on_discipline_id"
+  add_index "student_disciplines", ["student_id"], name: "index_student_disciplines_on_student_id"
 
   create_table "students", force: true do |t|
     t.string   "first_name"
@@ -47,6 +58,27 @@ ActiveRecord::Schema.define(version: 20140414123447) do
     t.integer  "age"
     t.integer  "klass"
   end
+
+  create_table "studentsdisciplines", force: true do |t|
+    t.integer  "student_id"
+    t.integer  "discipline_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "status_b",      default: true
+  end
+
+  add_index "studentsdisciplines", ["discipline_id"], name: "index_studentsdisciplines_on_discipline_id"
+  add_index "studentsdisciplines", ["student_id"], name: "index_studentsdisciplines_on_student_id"
+
+  create_table "studentsgroups", force: true do |t|
+    t.integer  "student_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "studentsgroups", ["group_id"], name: "index_studentsgroups_on_group_id"
+  add_index "studentsgroups", ["student_id"], name: "index_studentsgroups_on_student_id"
 
   create_table "teachers", force: true do |t|
     t.string   "first_name"

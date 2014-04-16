@@ -17,14 +17,11 @@ FactoryGirl.define do
 
   factory :discipline do
     sequence(:name) { |n| "discipline#{n}"}
-    klass_1 2
-    klass_2 2
-    klass_3 2
-    klass_4 2
-    klass_5 2
-    klass_6 2
-    klass_7 2
-    klass_8 2
+    speciality 'Fortepijonas'
+    klass 2
+    duration 1.5
+    variant 'Individuali pamoka'
+    syllabus 'Pradinio ugdymo'
   end
 
   factory :group do

@@ -1,42 +1,51 @@
-<div class="page-header">
-  <h1>Disciplines</h1>
+<div class="row">
+  <div class="page-header">
+  <div class="row">
+    <div class="col-sm-9">
+      <h1>Disciplines</h1>
+    </div>
+    <div class="col-sm-3">
+      <div class="pull-right discipline_new">
+        <%= link_to 'New', new_discipline_path, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+  </div>
 </div>
 
-<%= yield :edit %>
 
 <div class="table-responsive">
 <table class="table table-striped table-hover table-bordered">
-<thead>
-  <tr>
-    <th>Name</th>
-    <th>1</th>
-    <th>2</th>
-    <th>3</th>
-    <th>4</th>
-    <th>5</th>
-    <th>6</th>
-    <th>7</th>
-    <th>8</th>
-    <th>Actions</th>
-  </tr>
-</thead>
-<tbody>
-  <% @disciplines.each do |discipline| %>
-  <tr>
-    <td><%= link_to discipline.name, discipline %></td>
-    <td><%= discipline.klass_1 %></td>
-    <td><%= discipline.klass_2 %></td>
-    <td><%= discipline.klass_3 %></td>
-    <td><%= discipline.klass_4 %></td>
-    <td><%= discipline.klass_5 %></td>
-    <td><%= discipline.klass_6 %></td>
-    <td><%= discipline.klass_7 %></td>
-    <td><%= discipline.klass_8 %></td>
-    <td><%= link_to glyph(:pencil) + ' Edit', edit_discipline_path(discipline) %>
-     <%= link_to glyph(:trash) + ' Delete', discipline, method: :delete,
-              data: { confirm: "Are you sore?" } %></td>
-  </tr>
-  <% end %>
-</tbody>
+  <thead>
+    <tr>
+      <th>Pavadinimas</th>
+      <th>Spacialibė</th>
+      <th>Kl.</th>
+      <th>Val.</th>
+      <th>Programa</th>
+      <th>Forma</th>
+      <th>Privalomas</th>
+      <th>Būsena</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @disciplines.each do |discipline| %>
+    <tr>
+      <td><%= discipline.name %></td>
+      <td><%= discipline.speciality %></td>
+      <td><%= discipline.klass %></td>
+      <td><%= discipline.duration %></td>
+      <td><%= discipline.syllabus %></td>
+      <td><%= discipline.variant %></td>
+
+      <td><%= discipline.is_required? %></td>
+      <td><%= discipline.what_status? %></td>
+      <td><%= link_to glyph(:pencil) + ' Edit', edit_discipline_path(discipline) %>
+       <%= link_to glyph(:trash) + ' Delete', discipline, method: :delete,
+                data: { confirm: "Are you sore?" } %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
 </div>

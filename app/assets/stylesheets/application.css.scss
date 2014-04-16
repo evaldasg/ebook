@@ -18,5 +18,10 @@ padding-top: 70px;
 padding-bottom: 30px;
 }
 
+
 @import "bootstrap";
 @import "bootstrap/theme";
+
+.page-header {
+  margin-top: 0px;
+}

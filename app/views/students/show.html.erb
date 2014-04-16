@@ -28,5 +28,15 @@
           <%= top_nav_link_to 'Visi mokiniai', students_path %>
         </ul>
     </div>
+    <% if @student.studentsdisciplines.active_only.any? %>
+    <div class="panel panel-danger">
+      <div class="panel-heading">Priskirti mokytojus!</div>
+        <ul class="nav nav-pills nav-stacked">
+        <% @student.studentsdisciplines.active_only.each do |sd| %>
+            <li><%= link_to sd.discipline.name, new_student_studentsgroup_path(student_id: @student.id, discipline_id: sd.discipline.id) %></li>
+        <% end %>
+        </ul>
+    </div>
+    <% end %>
   </div>
 </div>

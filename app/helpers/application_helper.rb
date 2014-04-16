@@ -26,4 +26,5 @@ module ApplicationHelper
   #     "#{text}" content_tag(:b, class: "caret")
   #   end
   # end
+
 end
